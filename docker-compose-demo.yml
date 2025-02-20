@@ -1,0 +1,27 @@
+x-common-service: &common-service
+  build: .
+  volumes:
+    - .:/usr/src/app
+    - /usr/src/app/node_modules
+  command: node app.js
+
+services:
+  huoshan-deepseekv3:
+    <<: *common-service
+    ports:
+      - "3123:3123"
+    environment:
+    - API_KEY=cxxxxxx-ffff-aaaa-bbbb-ddddddddd
+    - PORT=3123
+    - MODEL=ep-202ffff209-30err
+    - SERVICE_URL=https://dddfasssssffd.ssafff.com/api/v3/chat/completions
+
+  ppinfra-deepseekv3:
+    <<: *common-service
+    ports:
+      - "3124:3123"
+    environment:
+    - API_KEY=sk_uFKffsdfasdfOwph-4344pdddfssf8-b90s9dafe5KY8
+    - PORT=3123
+    - MODEL=deepseek-v3
+    - SERVICE_URL=https://api.cccccccchhhhhaatt.com/v3/chat/completions
