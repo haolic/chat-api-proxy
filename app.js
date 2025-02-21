@@ -44,8 +44,12 @@ app.post('/chat', async (req, res) => {
       }
     );
     // 输出一下response.data的usage
-    console.log(process.env.SERVICE_URL, response.data.usage);
-    res.json(response.data);
+    console.log(process.env.SERVICE_URL, response?.data?.usage);
+    res.json(response?.data || {
+      error: error.message,
+      details: error.response?.data || '网络错误',
+      status: error.response?.status || 500
+    });
   } catch (error) {
     const errorResponse = {
       error: error.message,
